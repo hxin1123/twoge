@@ -47,5 +47,5 @@ This project uses various AWS services for a robust and scalable deployment. Bel
 
 ## Appendix
 
-![Architecture Diagram](Untitled Diagram.png)
+![Architecture Diagram](main/../Untitled%20Diagram.png)
 

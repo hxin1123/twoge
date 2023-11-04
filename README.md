@@ -33,7 +33,7 @@ This project uses various AWS services for a robust and scalable deployment. Bel
 * Under **VPC settings**, choose **VPC only**.
 * Complete these fields as follows:
    - The IPv4 CIDR block should be ```10.0.0.0/24```.
-   - The rest is default.
+   - The rest is the default.
 * Enable DNS hostnames and resolution:
    - Select VPC and click Actions.
    - Click Edit VPC settings.
@@ -49,11 +49,11 @@ This project uses various AWS services for a robust and scalable deployment. Bel
    - Availability Zone: us-west-2b.
    - IPv4 VPC CIDR block: 10.0.0.128/25.
 NOTE: [Visual subnet calculator](https://www.davidc.net/sites/default/subnets/subnets.html)
-* Create Internat Gateway and Attach to VPC
+* Create Internet Gateway and Attach to VPC
    - Name: twoge-igw-prd.
    - Click "Create internet gateway".
    - Attach to VPC- xin-twoge-vpc-uw2.
-   - Click "Attach internat gateway".
+   - Click "Attach internet gateway".
 * Create route table
    - Name: twogee-rt-prd.
    - VPC is xin-twoge-vpc-uw2.
@@ -61,7 +61,7 @@ NOTE: [Visual subnet calculator](https://www.davidc.net/sites/default/subnets/su
    - Add route: 
    - Destination: 0.0.0.0/0 .
    - Target: Internet Gateway- twoge-igw-prd.
-* Subnet Associate with route table
+* Subnet associate with route table
    - Go to Subnet associations.
    - Add twoge-pub-2a and twoge-pub-2a and save it.
 
@@ -77,7 +77,7 @@ NOTE: [Visual subnet calculator](https://www.davidc.net/sites/default/subnets/su
    - Region: us-west-2.
    - Uncheck-Block all public access.
    - Keep the default setting.
-   - Choose Permissions > Under Bucket Policy > choose Edit. To grant public read access for your website, copy the following bucket policy, and paste it in the Bucket policy editor.
+   - Choose Permissions > Under Bucket Policy > choose Edit. To grant public read access to your website, copy the following bucket policy, and paste it in the Bucket policy editor.
   
 ```json
 {
@@ -100,14 +100,14 @@ NOTE: [Visual subnet calculator](https://www.davidc.net/sites/default/subnets/su
 }
 ```
   - Upload the files or folder.
-  - Test the list of S3 bucket .
+  - Test the list of S3 bucket.
 ```sh
 aws s3 ls s3://xin-twoge-s3-uw2
 ```
 
 ### 4. EC2
 
-* Lauch an instance:
+* Launch an instance:
   - Name:ntwoge-uw2-prd
   - Amazon Machine Image > Linux 2 AMI
   - Instance type: t2.micro
@@ -116,7 +116,7 @@ aws s3 ls s3://xin-twoge-s3-uw2
 ```sh
 VPC: you created VPC for twoge
 Subnet: choose your public subnet
-Auto-assign public ip: Enabled
+Auto-assign public IP: Enabled
 Create security group: ntwoge-ec2-sg
 ```
 * Inbound Security Group Rules:

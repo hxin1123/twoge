@@ -346,6 +346,6 @@ chmod +x stress.py
 
 ## Appendix
 
-![Architecture Diagram](main/../Untitled Diagram v3.png)
+![Architecture Diagram](Untitled%20Diagram%20v3.png)
 
 

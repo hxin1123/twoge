@@ -161,6 +161,39 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now twoge
 sudo systemctl status twoge
 ```
+### SSH into Ec2 to deploy Twoge With Nginx
+1. Install nginx
+```sh
+sudo amazon-linux-extras install nginx1 -y
+```
+2. cd /etc/nginx
+3. sudo mkdir sites-available
+4. sudo mkdir sites-enabled
+5. cd sites-available
+```sh
+sudo vim twoge.service
+server {
+   listen 80;
+   server_name *;  # underscore as a catch-all
+
+   location / {
+      include proxy_params;
+      proxy_pass twoge-app-load-balancer-1298083779.eu-west-2.elb.amazonaws.com;
+   }
+}
+```
+6. Link the config file to sites-enabled
+```sh
+sudo ln -s /etc/nginx/sites-available/twoge_nginx /etc/nginx/sites-enabled/
+```
+7. Restart Nginx to apply changes
+```sh
+sudo systemctl daemon-reload
+```
+8. Check Nginx status
+```sh
+sudo systemctl restart nginx
+```
 
 ### 5. Deploying RDS
 
@@ -347,5 +380,3 @@ chmod +x stress.py
 ## Appendix
 
 ![Architecture Diagram](Untitled%20Diagram%20v3.png)
-
-
